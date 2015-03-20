@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
+    <title>Hair Salon: Stylist</title>
+  </head>
+  <body>
+    <div class='container'>
+      <h1>{{ stylist.getName }}'s clients:</h1>
+      <h3>Add a client:</h3>
+<!-- form stuff -->
+      <form action="/client" method="post">
+        <label for="c_name">Client name:</label>
+        <input id="c_name" name="c_name" type="text">
+        <input value="{{ stylist.getId }}" id="stylist_id" name="stylist_id" type="hidden"><br>
+        <button type="submit" class='btn btn-success'>Add client</button>
+      </form>
+
+      {% if clients is not empty %}
+        <p>Here are all of {{ stylist.getName }}'s clients:</p>
+      <ul>
+        {% for client in clients %}
+          <li>{{ client.getName }}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+        <p>{{ stylist.getName }} has no clients yet.</p>
+      {% endif %}
+
+      <form action="/stylists/{{ stylist.getId }}/deleteClients" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <button type='submit' class="btn btn-danger">Remove all clients</button>
+      </form>
+
+      <a href="/stylists/{{ cuisine.getId }}/edit"><button type="submit" class='btn btn-success'>Edit this stylist</button></a>
+        <br>
+      <a href="/"><button type="submit" class="btn btn-info">Home</button></a>
+    </div>
+  </body>
+</html>

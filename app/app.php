@@ -2,6 +2,7 @@
 
   require_once __DIR__."/../vendor/autoload.php";
   require_once __DIR__."/../src/Stylist.php";
+  require_once __DIR__."/../src/Client.php";
 
   $app = new Silex\Application();
   $app['debug'] = true;
@@ -54,7 +55,7 @@
   });
 
   //delete a single stylist
-  $app->delete("/stylists/{id}", function($id) use($app) {
+  $app->delete("/stylists/{id}/delete", function($id) use($app) {
     $current_stylist = Stylist::find($id);
     $current_stylist->delete();
     return $app['twig']->render('stylists.twig', array('stylists' => Stylist::getAll()));
