@@ -109,6 +109,38 @@
       //Assert
       $this->assertEquals([], $result);
     }
+
+    function testUpdate()
+    {
+      //Arrange
+      $name = "Louise";
+      $id = null;
+      $test_stylist = new Stylist($name, $id);
+      $test_stylist->save();
+
+      $new_name = "Thelma";
+
+      //Act
+      $test_stylist->update($new_name);
+
+      //Assert
+      $this->assertEquals("Thelma", $test_stylist->getName());
+    }
+
+    function testDelete()
+    {
+      //Arrange
+      $name = "Bridget";
+      $id = null;
+      $test_stylist = new Stylist($name, $id);
+      $test_stylist->save();
+
+      //Act
+      $test_stylist->delete();
+
+      //Assert
+      $this->assertEquals([], Client::getAll());
+    }
   }
 
  ?>
