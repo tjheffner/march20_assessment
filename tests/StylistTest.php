@@ -7,10 +7,14 @@
 
   require_once "src/Stylist.php";
 
-  // $DB = new PDO ('pgsql:host=localhost;dbname=hair_salon_test');
+  $DB = new PDO ('pgsql:host=localhost;dbname=hair_salon_test');
 
   class StylistTest extends PHPUnit_Framework_TestCase
   {
+    protected function tearDown()
+    {
+      Stylist::deleteAll();
+    }
 
     function test_getName()
     {
@@ -79,7 +83,7 @@
       $test_stylist->save();
 
       $name2 = "Rita";
-      $id = null;
+      $id2 = null;
       $test_stylist2 = new Stylist($name2, $id2);
       $test_stylist2->save();
 
