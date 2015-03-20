@@ -11,7 +11,6 @@
       <a href="/"><button type="submit" class="btn btn-info btn-sm">Home</button></a>
       <a href="/stylists/{{ stylist.getId }}/edit"><button type="submit" class='btn btn-success btn-sm'>Update stylist's info</button></a>
 
-
 <!-- Add client form-->
       <h3>Add a client:</h3>
       <form action="/client" method="post">
@@ -35,11 +34,10 @@
         <input name="_method" type="hidden" value="delete">
         <button type='submit' class="btn btn-danger btn-sm">Remove all clients</button>
       </form>
-      
+
       {% else %}
         <p>{{ stylist.getName }} has no clients yet.</p>
       {% endif %}
-
 
     </div>
   </body>

@@ -7,13 +7,15 @@
     <div class='container'>
       <h1>Harry's Hair Salon</h1>
       <h3>Add a stylist:</h3>
-          <!-- form stuff -->
+
+<!-- Form to add a stylist -->
         <form action="/stylists" method="post">
           <label for="name">Stylist Name:</label>
           <input id="name" name="name" type="text">
           <button type="submit" class='btn btn-default'>Add stylist</button>
         </form>
-          <!-- twig stuff -->
+
+<!-- Twig logic to show stylists. Only shows delete button if a stylist exists. -->
           {% if stylists is not empty %}
             <p>Here are the salon's available stylists:</p>
             <ul>
@@ -25,7 +27,7 @@
               <form action="/delete_stylists" method="post">
                 <button type="submit" class='btn btn-danger'>Delete stylists</button>
               </form>
-              
+
           {% else %}
             <p>No one has added a stylist yet.</p>
           {% endif %}
