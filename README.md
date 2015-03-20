@@ -10,11 +10,21 @@ This assessment is to "create an app for a hair salon. The owner should be able 
 ##Use and Editing
 To use the app, download the source code and run it in on your php server.
 To edit the app, download the source code and open it in your text editor.
-To use the database, create a database in psql named "hair_salon", then use the command \i hair_salon.sql
-  - To check the tests, you'll also need to create the database "hair_salon_test" using the template from "hair_salon"
 
     *Note: If you are copying any of the code to your own directories, you may need to install Composer
     in your root directory.*
+
+##PSQL stuff
+To use the database, create a database in psql named "hair_salon", then use the command \i hair_salon.sql
+  - To check the tests, you'll also need to create the database "hair_salon_test" using the template from "hair_salon"
+
+If that doesn't work, the commands I used to create my database were:
+CREATE DATABASE hair_salon;
+\c hair_salon
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+CREATE TABLE clients (id serial PRIMARY KEY, c_name varchar, stylist_id int);
+CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
+
 
 ##Copyright (c) 2015 Tanner Heffner
 
