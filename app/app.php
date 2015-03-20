@@ -72,6 +72,7 @@
   *  the easiest thing to do is delete the single entry and enter a new one.
   */
 
+//add client
   $app->post("/client", function() use ($app) {
     $c_name = $_POST['c_name'];
     $stylist_id = $_POST['stylist_id'];
@@ -82,6 +83,7 @@
     return $app['twig']->render('stylist.twig', array('stylist' => $current_stylist, 'clients' => $current_stylist->getClients()));
   });
 
+//delete all clients
   $app->delete("/stylists/{id}/deleteClients", function($id) use ($app) {
     $current_stylist = Stylist::find($id);
     $clients = $current_stylist->getClients();
@@ -91,6 +93,7 @@
     return $app['twig']->render('stylist.twig', array('stylist' => $current_stylist, 'clients' => $current_stylist->getClients()));
   });
 
+//delete one client
   $app->delete("/stylists/{id}/deleteSingle", function($id) use ($app) {
     $client_id = $_POST['client_id'];
     $current_stylist = Stylist::find($id);
