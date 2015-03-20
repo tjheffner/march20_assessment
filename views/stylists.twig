@@ -21,13 +21,15 @@
                   <li><strong><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a></strong></li>
                 {% endfor %}
               </ul>
+
+              <form action="/delete_stylists" method="post">
+                <button type="submit" class='btn btn-danger'>Delete stylists</button>
+              </form>
+              
           {% else %}
             <p>No one has added a stylist yet.</p>
           {% endif %}
 
-        <form action="/delete_stylists" method="post">
-          <button type="submit" class='btn btn-danger'>Delete stylists</button>
-        </form>
     </div>
   </body>
 </html>
