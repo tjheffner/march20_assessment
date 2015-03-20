@@ -138,8 +138,8 @@
       //Act
       $test_stylist->delete();
 
-      //Assert
-      $this->assertEquals([], Client::getAll());
+      //Assert     //change this to client once class is created!!
+      $this->assertEquals([], Stylist::getAll());
     }
   }
 
