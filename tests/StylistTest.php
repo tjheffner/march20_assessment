@@ -140,7 +140,7 @@
       //Act
       $test_stylist->delete();
 
-      //Assert     //change this to client once class is created!!
+      //Assert
       $this->assertEquals([], Stylist::getAll());
     }
 
@@ -162,6 +162,26 @@
 
       //Assert
       $this->assertEquals([$test_client], $found_clients);
+    }
+
+    function test_deleteClientsByStylist()
+    {
+      //Arrange
+      $name = "Mel";
+      $id = null;
+      $test_stylist = new Stylist($name, $id);
+      $test_stylist->save();
+
+      $stylist_id = $test_stylist->getId();
+      $c_name = "Terry";
+      $test_client = new Client($c_name, $id, $stylist_id);
+      $test_client->save();
+
+      //Act
+      $test_stylist->delete();
+
+      //Assert
+      $this->assertEquals([], Client::getAll());
     }
 
   }
