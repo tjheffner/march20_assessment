@@ -5,7 +5,8 @@
   </head>
   <body>
     <div class='container'>
-      <h1>Add a stylist:</h1>
+      <h1>Harry's Hair Salon</h1>
+      <h3>Add a stylist:</h3>
           <!-- form stuff -->
         <form action="/stylists" method="post">
           <label for="name">Stylist Name:</label>
@@ -23,7 +24,7 @@
           {% else %}
             <p>No one has added a stylist yet.</p>
           {% endif %}
-          
+
         <form action="/delete_stylists" method="post">
           <button type="submit" class='btn btn-danger'>Delete stylists</button>
         </form>
