@@ -14,7 +14,8 @@
   {
     protected function tearDown()
     {
-  //    Client::deleteAll();
+      Client::deleteAll();
+      Stylist::deleteAll();
     }
 
     function test_getC_name()
@@ -52,7 +53,76 @@
       $this->assertEquals(true, is_numeric($result));
     }
 
-    
+    function test_save()
+    {
+      //Arrange
+      $name = "Phyllis";
+      $id = null;
+      $test_stylist = new Stylist($name, $id);
+      $test_stylist->save();
+
+      $c_name = "Victor";
+      $stylist_id = $test_stylist->getId();
+      $test_client = new Client($c_name, $id, $stylist_id);
+
+      //Act
+      $test_client->save();
+
+      //Assert
+      $result = Client::getAll();
+      $this->assertEquals($test_client, $result[0]);
+    }
+
+    function test_getAll()
+    {
+      //Arrange
+      $name = "Bonnie";
+      $id = null;
+      $c_name = "Clyde";
+      $c_name2 = "Kelly";
+
+      $test_stylist = new Stylist($name, $id);
+      $test_stylist->save();
+
+      $stylist_id = $test_stylist->getId();
+
+      $test_client = new Client($c_name, $id, $stylist_id);
+      $test_client->save();
+      $test_client2 = new Client($c_name2, $id, $stylist_id);
+      $test_client2->save();
+
+      //Act
+      $result = Client::getAll();
+
+      //Assert
+      $this->assertEquals([$test_client, $test_client2], $result);
+    }
+
+    function test_deleteAll()
+    {
+      //Arrange
+      $name = "Bonnie";
+      $id = null;
+      $c_name = "Clyde";
+      $c_name2 = "Kelly";
+
+      $test_stylist = new Stylist($name, $id);
+      $test_stylist->save();
+
+      $stylist_id = $test_stylist->getId();
+
+      $test_client = new Client($c_name, $id, $stylist_id);
+      $test_client->save();
+      $test_client2 = new Client($c_name2, $id, $stylist_id);
+      $test_client2->save();
+
+      //Act
+      $result = Client::deleteAll();
+
+      //Assert
+      $result = Client::getAll();
+      $this->assertEquals([], $result);
+    }
 
   }
 
