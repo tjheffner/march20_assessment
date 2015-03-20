@@ -20,6 +20,7 @@
       <ul>
         {% for client in clients %}
           <li>{{ client.getC_name }}</li>
+          <form action="/stylists/{{ stylist.getId }}/deleteSingle" method="post"><input value='{{ client.getId }}' name="client_id" id="client_id" type="hidden"><input name="_method" type="hidden" value="delete"><button type="submit" class="btn btn-danger btn-xs">Cancel client</button></form>
         {% endfor %}
       </ul>
       {% else %}
@@ -31,7 +32,7 @@
         <button type='submit' class="btn btn-danger">Remove all clients</button>
       </form>
 
-      <a href="/stylists/{{ stylist.getId }}/edit"><button type="submit" class='btn btn-success'>Edit this stylist</button></a>
+      <a href="/stylists/{{ stylist.getId }}/edit"><button type="submit" class='btn btn-success'>Update stylist's info</button></a>
         <br>
       <a href="/"><button type="submit" class="btn btn-info">Home</button></a>
     </div>
