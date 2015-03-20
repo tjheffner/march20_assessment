@@ -67,7 +67,9 @@
     return $app['twig']->render('stylists.twig', array('stylists' => Stylist::getAll()));
   });
 
-  /* Routes for Client class. Should render on same pages.
+  /* Routes for Client class.
+  *  Only one page is called for client because if the client name needs to be edited,
+  *  the easiest thing to do is delete the single entry and enter a new one.
   */
 
   $app->post("/client", function() use ($app) {
