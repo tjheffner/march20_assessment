@@ -143,6 +143,27 @@
       //Assert     //change this to client once class is created!!
       $this->assertEquals([], Stylist::getAll());
     }
+
+    function test_getClients()
+    {
+      //Arrange
+      $name = "Mel";
+      $id = null;
+      $test_stylist = new Stylist($name, $id);
+      $test_stylist->save();
+
+      $stylist_id = $test_stylist->getId();
+      $c_name = "Terry";
+      $test_client = new Client($c_name, $id, $stylist_id);
+      $test_client->save();
+
+      //Act
+      $found_clients = $test_stylist->getClients();
+
+      //Assert
+      $this->assertEquals([$test_client], $found_clients);
+    }
+
   }
 
  ?>
