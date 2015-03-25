@@ -69,11 +69,6 @@
       $GLOBALS['DB']->exec("DELETE FROM clients *;");
     }
 
-    function deleteClients()
-    {
-      $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getStylistId()};");
-    }
-
     function deleteSingle()
     {
       $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->getId()};");

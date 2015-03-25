@@ -86,10 +86,7 @@
 //delete all clients
   $app->delete("/stylists/{id}/deleteClients", function($id) use ($app) {
     $current_stylist = Stylist::find($id);
-    $clients = $current_stylist->getClients();
-    $single_client = $clients[0];
-    $single_client->deleteClients();
-
+    $current_stylist->deleteClients();
     return $app['twig']->render('stylist.twig', array('stylist' => $current_stylist, 'clients' => $current_stylist->getClients()));
   });
 
@@ -105,7 +102,6 @@
       }
     }
     $that_client->deleteSingle();
-
     return $app['twig']->render('stylist.twig', array('client_id' => $client_id, 'stylist' => $current_stylist, 'clients' => $current_stylist->getClients()));
   });
 
